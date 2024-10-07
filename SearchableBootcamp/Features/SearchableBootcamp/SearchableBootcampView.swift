@@ -12,10 +12,19 @@ struct SearchableBootcampView: View {
     @StateObject var viewModel = SearchableBootcampViewModel()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List(viewModel.movies) { movie in
+                VStack(alignment: .leading) {
+                    Text(movie.title)
+                        .font(.headline)
+                    Text("Release Date: \(movie.release_date)")
+                    
+                }
+            }.navigationTitle("Movies")
             .task {
                 await viewModel.fetchMovies()
             }
+        }
     }
 }
 

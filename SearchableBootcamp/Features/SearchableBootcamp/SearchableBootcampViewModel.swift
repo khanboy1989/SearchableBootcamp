@@ -19,9 +19,10 @@ final class SearchableBootcampViewModel: ObservableObject {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-            movies = decodedResponse.results
-            
-            print("Movies = \(movies)")
+            await MainActor.run(body: {
+                movies = decodedResponse.results
+                print("Movies = \(movies)")
+            })
         }catch {
             print("error =\(error)")
         }

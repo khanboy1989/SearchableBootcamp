@@ -10,6 +10,10 @@ struct Movie: Identifiable, Codable {
     let title: String
     let genre_ids: [Int]
     let release_date: String
+    
+    var genres: [Genre] {
+        return genre_ids.map { Genre(rawValue: $0) }
+    }
 }
 
 struct MovieResponse: Codable {
