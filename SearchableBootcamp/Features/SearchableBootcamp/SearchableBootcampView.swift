@@ -30,7 +30,7 @@ struct SearchableBootcampView: View {
                 }
             }
             // Modifier to make the list searchable.
-            .searchable(text: $viewModel.searchText, placement: .automatic, prompt: Text("Search Movies"))
+            .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer, prompt: Text("Search Movies"))
             
             // Modifier to define the search scope, allowing the user to filter by genres.
             .searchScopes($viewModel.searchScope, scopes: {
