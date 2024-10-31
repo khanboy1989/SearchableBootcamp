@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct SearchableBootcampView: View {
+    @Environment(\.moviesManager) private var moviesManager  // Access MoviesManager from environment
+
     
     // Initializing the ViewModel to manage the state and logic of the view.
-    @StateObject var viewModel = SearchableBootcampViewModel()
+    @StateObject private var viewModel: SearchableBootcampViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: SearchableBootcampViewModel(moviesManager: moviesManager))
+    }
     
     var body: some View {
+        content
+    }
+    
+    @ViewBuilder
+    private var content: some View {
         NavigationStack {
             // Display a list of movies.
             // If the user is searching, show filteredMovies, otherwise show all movies.

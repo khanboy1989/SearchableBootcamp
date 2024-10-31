@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // 'MoviesManager' is an actor class responsible for fetching movie data asynchronously.
 // It ensures safe, concurrent access to its methods and properties.
@@ -14,7 +15,7 @@ actor MoviesManager {
     // Asynchronous function to fetch movies from the TMDb API.
     func fetchMovies() async throws -> [Movie] {
         // Your TMDb API key (replace this with a valid key if needed).
-        let apiKey = ""  // Replace with your own TMDb API key
+        let apiKey = "5f81bcbac7153e9626b510f45e5e36c3"  // Replace with your own TMDb API key
         
         // Constructing the URL to discover movies using the provided API key.
         let urlString = "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)"
@@ -39,5 +40,16 @@ actor MoviesManager {
             // Throw a custom URLError indicating a bad server response.
             throw URLError(.badServerResponse)
         }
+    }
+}
+
+struct MoviesManagerKey: EnvironmentKey {
+    static let defaultValue = MoviesManager()
+}
+
+extension EnvironmentValues {
+    var moviesManager: MoviesManager {
+        get { self [MoviesManagerKey.self] }
+        set { self[MoviesManagerKey.self] = newValue }
     }
 }
