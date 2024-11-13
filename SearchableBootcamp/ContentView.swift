@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.moviesManager) var moviesManager  // Corrected environment key name
-    @State private var movies: [Movie]? = nil ?? []        // `movies` should be a @State property
+    @Environment(\.moviesManager) var moviesManager
+    @State private var movies: [Movie]? = nil ?? []
 
     var body: some View {
         VStack {
