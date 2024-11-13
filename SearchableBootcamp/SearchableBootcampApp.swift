@@ -11,7 +11,18 @@ import SwiftUI
 struct SearchableBootcampApp: App {
     var body: some Scene {
         WindowGroup {
-            SearchableBootcampView()
+            ContentView()
         }
+    }
+}
+
+struct MoviesManagerKey: EnvironmentKey {
+    static let defaultValue: MoviesManager = MoviesManager()
+}
+
+extension EnvironmentValues {
+    var moviesManager: MoviesManager {
+        get { self[MoviesManagerKey.self] }
+        set { self[MoviesManagerKey.self] = newValue }
     }
 }

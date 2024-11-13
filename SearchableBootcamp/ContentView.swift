@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.moviesManager) var moviesManager  // Corrected environment key name
+    @State private var movies: [Movie]? = nil ?? []        // `movies` should be a @State property
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Movies Count: \(movies?.count)")
+            if let movies {
+                List(movies, id: \.id) { movie in
+                    Text(movie.title)
+                }
+            }
+            
         }
-        .padding()
+        .task {
+            movies = try? await moviesManager.fetchMovies()
+        }
     }
 }
 
