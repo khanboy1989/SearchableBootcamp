@@ -11,9 +11,7 @@ struct SearchableBootcampView: View {
     
     // Initializing the ViewModel to manage the state and logic of the view.
     @StateObject var viewModel = SearchableBootcampViewModel()
-    
-    @Environment(\.moviesManager) var moviesManager: MoviesManager
-    
+        
     var body: some View {
         NavigationStack {
             // Display a list of movies.
