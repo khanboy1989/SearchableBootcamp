@@ -12,7 +12,6 @@ struct SearchableBootcampApp: App {
     var body: some Scene {
         WindowGroup {
             SearchableBootcampView()
-                .environment(\.moviesManager , MoviesManager())
         }
     }
 }

@@ -11,7 +11,7 @@ import Combine
 final class SearchableBootcampViewModel: ObservableObject {
     
     // The manager responsible for fetching movies (e.g., from an API). & Injected as moviesManager by using EnvironmentKeys and EnviromentValues
-    private let moviesManager: MoviesManager
+    private let moviesManager: MoviesManager = MoviesManager()
 
     // Published properties to bind to the UI.
     
@@ -58,8 +58,7 @@ final class SearchableBootcampViewModel: ObservableObject {
     }
     
     // Initializer to set up subscribers.
-    init(moviesManager: MoviesManager) {
-        self.moviesManager = moviesManager
+    init() {
         addSubscribers()
     }
     

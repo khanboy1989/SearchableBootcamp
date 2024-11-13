@@ -8,16 +8,10 @@
 import SwiftUI
 
 struct SearchableBootcampView: View {
-    @Environment(\.moviesManager) private var moviesManager  // Access MoviesManager from environment
 
-    
     // Initializing the ViewModel to manage the state and logic of the view.
-    @StateObject private var viewModel: SearchableBootcampViewModel
-    
-    init() {
-        self._viewModel = StateObject(wrappedValue: SearchableBootcampViewModel(moviesManager: moviesManager))
-    }
-    
+    @StateObject private var viewModel: SearchableBootcampViewModel = .init()
+
     var body: some View {
         content
     }
