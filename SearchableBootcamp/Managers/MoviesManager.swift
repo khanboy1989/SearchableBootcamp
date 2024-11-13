@@ -15,7 +15,7 @@ actor MoviesManager {
     // Asynchronous function to fetch movies from the TMDb API.
     func fetchMovies() async throws -> [Movie] {
         // Your TMDb API key (replace this with a valid key if needed).
-        let apiKey = "5f81bcbac7153e9626b510f45e5e36c3"  // Replace with your own TMDb API key
+        let apiKey = ""  // Replace with your own TMDb API key
         
         // Constructing the URL to discover movies using the provided API key.
         let urlString = "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)"
